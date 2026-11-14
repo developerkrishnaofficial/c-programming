@@ -1,90 +1,59 @@
-//File Input/Output
-//file-container in a storege device to store data.
-//-Ram is valatile
-//-contenrs are lost when program terminates.
-//-files are used to persist the data.
- 
-
-// crete,open, close, read from, write in a file
-
-
-// types of files   1)text files : textual data  .txt, .c
-               //   2) binary files:binary data, .exe, .mp3, .jpg
-
-
-//File Pointer
-             //FILE is(hidden) structure that neesa to bw created for opening a file
-             // a FILE ptr that points to this structure & is used to access the file.
-             //FILE *fptr;
-
-
-// File opening mpdes
-    //"r" open to read, 
-    //"rb" open to read in binary, 
-    //"w" open to write, 
-    //"wb" open to write in binary, 
-    //"a" open to append
-
-/*#include<stdio.h>
+// 1. Basic File Opening and Closing
+/*
+#include<stdio.h>
 
 int main(){
     FILE *fptr;
-    fptr = fopen("test.txt","r");     //r mean read
+    fptr = fopen("test.txt", "r");     // r means read
     fclose(fptr);
     return 0;
 }
 */
 
-
-
-/*#include<stdio.h>
+// 2. Check if File Exists or Create New File
+/*
+#include<stdio.h>
 
 int main(){
     FILE *fptr;
-    //fptr = fopen("Newtest.txt","r");
-    fptr = fopen("Newtest.txt","w"); //crete the new txt file
+    fptr = fopen("Newtest.txt", "w"); // creates a new txt file for writing
     if(fptr == NULL){
         printf("FILE doesn't exist \n");
-    }else{
+    } else {
         fclose(fptr);
     }
     
     return 0;
-}*/
+}
+*/
 
-
-//reading from a file: char ch:
-                     //fscanf(fptr, "%c", &ch); // file pointer, format Pacifier,address of varible
-/*#include<stdio.h>
+// 3. Reading Integers from a File using fscanf
+/*
+#include<stdio.h>
 
 int main(){
     FILE *fptr;
-    fptr = fopen("test.txt","r"); //crete the new txt file
+    fptr = fopen("test.txt", "r"); 
 
     int ch;
-    fscanf(fptr, "%d", &ch); // file pointer, format Pacifier,address of varible
+    fscanf(fptr, "%d", &ch); 
     printf("character = %d \n", ch);
     fscanf(fptr, "%d", &ch);
     printf("character = %d \n", ch);
-    fscanf(fptr, "%d", &ch);
-    printf("character = %d \n", ch);
-    fscanf(fptr, "%d", &ch);
-    printf("character = %d \n", ch);
-    fscanf(fptr, "%d", &ch);
-    printf("character = %d \n", ch);
+    
+    fclose(fptr);
     return 0;
-}*/
+}
+*/
 
-
-
-//writing to a file: char ch='A':
-                     //fprintf(fptr, "%c", &ch);
-/*#include<stdio.h>
+// 4. Writing Characters to a File using fprintf (Write or Append mode)
+/*
+#include<stdio.h>
 
 int main(){
     FILE *fptr;
-    //fptr = fopen("test.txt","w");     
-    fptr = fopen("test.txt","a"); 
+    // fptr = fopen("test.txt", "w");       
+    fptr = fopen("test.txt", "a"); // append mode
 
     fprintf(fptr, "%c", 'k');
     fprintf(fptr, "%c", 'r');
@@ -96,27 +65,19 @@ int main(){
 }
 */
 
-
-//Read & Write a char
-             //fgetc(fptr) //read
-             //fputc('A',fptr) // write
-/*#include<stdio.h>
+// 5. Read and Write a Character using fgetc and fputc
+/*
+#include<stdio.h>
 
 int main(){
     FILE *fptr;
-//fgetc(fptr) //read
-    // fptr = fopen("test.txt","r"); 
 
-    // printf("%c \n", fgetc(fptr));
-    // printf("%c \n", fgetc(fptr));
-    // printf("%c \n", fgetc(fptr));
-    // printf("%c \n", fgetc(fptr));
+    // fgetc(fptr) -> read example
+    // fptr = fopen("test.txt", "r");  
     // printf("%c \n", fgetc(fptr));
 
-
-//fputc('A',fptr) // write
-    fptr = fopen("test.txt","w"); 
-
+    // fputc('A', fptr) -> write example
+    fptr = fopen("test.txt", "w");  
     fputc('s', fptr);
     fputc('h', fptr);
     fputc('i', fptr);
@@ -124,60 +85,51 @@ int main(){
     fclose(fptr);
 
     return 0;
-}*/
+}
+*/
 
+// 6. Read Entire File Until EOF (End of File)
+/*
+#include<stdio.h>
 
-
-
-//EOF(End of File)
- //fgetc returns EOF to show that the file has ended.
- /*#include<stdio.h>
-
- int main(){
-     FILE *fptr;
-     fptr = fopen("test.txt","r"); 
-     char ch;
-     ch =fgetc(fptr);
-     while(ch != EOF){
+int main(){
+    FILE *fptr;
+    fptr = fopen("test.txt", "r"); 
+    char ch;
+    ch = fgetc(fptr);
+    
+    while(ch != EOF){
         printf("%c", ch);
-        ch =fgetc(fptr);
-     }
-     printf("\n");
-     fclose(fptr);
-     return 0;
- }*/
+        ch = fgetc(fptr);
+    }
+    printf("\n");
+    fclose(fptr);
+    return 0;
+}
+*/
 
-
-
-//Q61. make a program to read 5 integers from a file.
- /*#include <stdio.h>
+// 7. Q61: Read 5 Integers from a File
+/*
+#include <stdio.h>
 
 int main() {
     FILE *fptr;
     fptr = fopen("test.txt", "r");
 
-
     int n;
-    fscanf(fptr, "%d", &n);
-    printf("number = %d \n", n);
-    fscanf(fptr, "%d", &n);
-    printf("number = %d \n", n);
-    fscanf(fptr, "%d", &n);
-    printf("number = %d \n", n);
-    fscanf(fptr, "%d", &n);
-    printf("number = %d \n", n);
-    fscanf(fptr, "%d", &n);
-    printf("number = %d \n", n);
+    for(int i = 0; i < 5; i++){
+        fscanf(fptr, "%d", &n);
+        printf("number = %d \n", n);
+    }
 
     fclose(fptr);
     return 0;
 }
 */
 
-
-
-//Q62. make a program to input student information from a user & enter it to a file.
-/*#include <stdio.h>
+// 8. Q62: Input Student Information from User & Write to File
+/*
+#include <stdio.h>
 
 int main() {
     FILE *fptr;
@@ -188,60 +140,60 @@ int main() {
     float cgpa;
 
     printf("enter name: ");
-    scanf("%s", &name);
+    scanf("%s", name);
     printf("enter age: ");
     scanf("%d", &age);
     printf("enter cgpa: ");
     scanf("%f", &cgpa);
 
     fprintf(fptr, "student name: %s \n", name);
-    fprintf(fptr, "student age:%d \n", age);
-    fprintf(fptr, "student cgpa:%f \n", cgpa);
+    fprintf(fptr, "student age: %d \n", age);
+    fprintf(fptr, "student cgpa: %f \n", cgpa);
+    
     fclose(fptr);
     return 0;
-}*/
+}
+*/
 
-
-
-//Q63. write a program to write all the odd numbers from 1 to n in a file.
-/*#include <stdio.h>
+// 9. Q63: Write All Odd Numbers from 1 to n in a File
+/*
+#include <stdio.h>
 
 int main() {
     FILE *fptr;
     fptr = fopen("odd.txt", "w");
     
     int n;
-    printf("enter n:");
+    printf("enter n: ");
     scanf("%d", &n);
 
-    for(int i=1; i<=n; i++) {
+    for(int i = 1; i <= n; i++) {
         if(i % 2 != 0) {
             fprintf(fptr, "%d \n", i);
-
         }
     }
 
     fclose(fptr);
     return 0;
-}*/
+}
+*/
 
-
-//Q64. 2 numbers- a & b, are written in a file. write a program to replace them with thier sum.
+// 10. Q64: Read Two Numbers from File and Replace with Their Sum
 #include <stdio.h>
 
 int main() {
     FILE *fptr;
     fptr = fopen("sum.txt", "r");
 
-    int a;
+    int a, b;
     fscanf(fptr, "%d", &a);
-    int b;
     fscanf(fptr, "%d", &b);
     
     fclose(fptr);
 
     fptr = fopen("sum.txt", "w");
-    fprintf(fptr, "%d", a+b);
+    fprintf(fptr, "%d", a + b);
+    
     fclose(fptr);
     return 0;
 }
