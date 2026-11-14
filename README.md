@@ -1,6 +1,6 @@
 # 🚀 C Programming Mastery
 
-Welcome to my C Programming repository! This repository contains a comprehensive collection of C programs, exercises, and fundamental concepts that I have written and practiced, ranging from basic syntax to advanced topics like Dynamic Memory Allocation and File I/O.
+Welcome to my C Programming repository! This repository contains a comprehensive collection of C programs, exercises, and fundamental concepts that I have written and practiced, ranging from basic syntax to advanced topics like Dynamic Memory Allocation, File I/O, and Preprocessor Directives.
 
 ---
 
@@ -62,6 +62,11 @@ Welcome to my C Programming repository! This repository contains a comprehensive
 * **`malloc()` & `calloc()`:** Allocating memory at runtime.
 * **`free()`:** Preventing memory leaks.
 * **`realloc()`:** Resizing previously allocated memory blocks dynamically.
+
+### 12. Unions, Enums & Preprocessor Directives
+* **Unions (`union`):** Shared memory allocation for different data types.
+* **Enums (`enum`):** User-defined named integer constants (default and custom status codes).
+* **Preprocessor Directives:** `#define` constants and macros, conditional compilation (`#ifdef`, `#else`, `#endif`), and predefined macros (`__FILE__`, `__DATE__`, `__TIME__`, `__LINE__`).
 
 ---
 
