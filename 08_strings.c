@@ -1,385 +1,190 @@
-//Strings:a character array terminated by a '\0'(null character)
-   //null charactre denoted string termination
-     //ex: char name[] ={'k','r','i','s','h','\0'};   -> char name[]="krishna";
-         //char class[] ={'r','a','m','\0'};          -> char class[]="ram";
-            //Notes: agar yachya mage automatic compilara \0 add karto Char name[]="krishna"; char class[]="ram"; 
+// 1. Basic Pointer Declaration and Accessing Value
 /*
 #include<stdio.h>
 
 int main(){
-    //char name[] ={'k','r','i','s','h','\0'};
-    char name[]="krishna";
-    //char class[] ={'r','a','m','\0'}; 
-    char class[]="ram";
+    int age = 22;
+    int *ptr = &age;
+    int _age = *ptr;
+
+    printf("%d", _age);
     return 0;
 }
 */
 
-
-//Q47. create a string firstName & lastName to store details of user & print all the characters using a loop.
-/*#include<stdio.h>
-
-void printString(char arr[]);
-
-int main(){
-    char firstName[] = "krishna";
-    char lastName[] = "bari";
-
-    printString(firstName);
-    printString(lastName);
-    return 0;
-}
-
-void printString(char arr[]){
-    for(int i=0; arr[i] !='\0'; i++){
-        printf("%c", arr[i]);
-    }
-    printf("\n");
-}                        //output:krishna
-*/                              //bari
-
-
-
-
-
-//String Format Specifier  ->  "%s"
-                      //char name[]="krishna";
-                      //printf("%s", name);
-
-/*#include<stdio.h>
-
-void printString(char arr[]);
-
-int main(){
-    char name[50];
-    scanf("%s", name);
-    printf("your name is %s", name);
-
-    return 0;
-}
-void printString(char arr[]){
-    for(int i=0; arr[i] !='\0'; i++){
-        printf("%c", arr[i]);
-    }
-    printf("\n");
-}  */
-
-
-
-//Q48. ask the user to enter their firstName & print it back to them.
-     //also try this with thir fullName
-
- /*  #include<stdio.h>
-
-     void printString(char arr[]);
-     
-     int main(){
-        //  char firstname[50];
-        //  scanf("%s", firstname);
-        //  printf("your name is %s", firstname);        //1st Qustion ans
-
-        char fullName[100];
-        scanf("%s", fullName);
-        printf("your full name is: %s", fullName);
-         
-         return 0;
-     }
-     void printString(char arr[]){
-         for(int i=0; arr[i] !='\0'; i++){
-             printf("%c", arr[i]);
-         }
-         printf("\n");
-     }  
-*/  
-
-
-
-
-//IMPORTANT NOTES
-//scanf() cannot input multi-word strings with spaces
-//here, gets() & puts() come into picture
-
-
-
-//string functions
-   //gets(str) ->please it nit safe. dangerous & outdated = input a string(even multiword)
-   //puts(str) -> output a sting
-   //fgets(str, n, file) -> stops when n-1 chars input or new line is entered
-
-
-
-/*#include<stdio.h>
-
-int main(){
-
-    char str[100];
-    //gets(str);   //input geto
-    fgets(str, 100, stdin);   //input geto
-    puts(str);  // output deto
-
-    return 0;
-}*/
-
-
-
-//string using Pointers
-   
-/*#include<stdio.h>
-
-int main(){
-
-    char *canChange = "hello krushna";
-    puts(canChange);
-    canChange = "krishna";
-    puts(canChange);
-
-    return 0;
-}*/
-
-
-
-
-//Q49.make a program that inputs user's name & prints its length.
+// 2. Printing Addresses using %u and %p
 /*
 #include<stdio.h>
 
-void printString(char arr[]);
-int countLength(char arr[]);
-
 int main(){
-    char name[100];
-    fgets(name, 100, stdin);
-    printf("lenght is: %d",countLength(name));
-    return 0;
-}
+    int age = 23;
+    int *ptr = &age;
 
-int countLength(char arr[]){
-    int count = 0;
-    for (int i=0; arr[i]!='\0';i++){
-        count++;
-    }
-    return count-1;
-}
-
-void printString(char arr[]){
-    for(int i=0; arr[i] !='\0'; i++){
-        printf("%c", arr[i]);
-    }
-    printf("\n");
-}*/
-
-
-
-// Standard Library Fuction : <string.h>
-
-//  1) strlen(str): count number of characters  excluding '\0'
-/*#include<stdio.h>
-#include<string.h>
-
-void printString(char arr[]);
-int countLength(char arr[]);
-
-int main(){
-    char name[] ="krishna";
-    int length = strlen(name);
-    printf("lenght is: %d", length);
-    return 0;
-}
-
-int countLength(char arr[]){
-    int count = 0;
-    for (int i=0; arr[i]!='\0';i++){
-        count++;
-    }
-    return count-1;
-}
-
-void printString(char arr[]){
-    for(int i=0; arr[i] !='\0'; i++){
-        printf("%c", arr[i]);
-    }
-    printf("\n");
-}
-*/
-
-
-
-
-//2) strcpy(newStr,oldStr): copies value of old string to new string
-/*#include<stdio.h>
-#include<string.h>
-
-int main(){
-    char firstStr[] = "HHHA";
-    char secStr[] = "HHHB";
-    printf("%d \n", strcmp(firstStr, secStr));
+    // address formats
+    printf("%u \n", &age);
+    printf("%d \n", ptr);
+    printf("%d \n", &ptr);
     return 0;
 }
 */
 
-
-//Q50. take a string input from the user using %c.
-/*#include<stdio.h>
-#include<string.h>
-
-int main(){
-    char str[100];
-    char ch;
-    int i = 0;
-
-    while(ch != '\n'){
-        scanf("%c", &ch);
-        str[i] = ch;
-        i++;
-    }
-    str[i] = '\0';
-    puts(str);
-    return 0;
-}*/
-
-
-
-//salting
-//Q51. find the salted form of paaaword enterd by user if the salt is "123" & added at the end.
-/*#include<stdio.h>
-#include<string.h>
-
-void printString(char arr[]);
-int countLength(char arr[]);
-void salting(char password[]);
-
-int main(){
-    char password[100];
-    scanf("%s", password);
-    salting(password);
-    return 0;
-}
-
-void salting(char password[]){
-    char salt[] = "123";
-    char newPass[200];
-
-    strcpy(newPass, password);  //newPass = "test"
-    strcat(newPass, salt);   // newPass = "test" + "123";
-    puts(newPass);
-}
-
-int countLength(char arr[]){
-    int count = 0;
-    for (int i=0; arr[i]!='\0';i++){
-        count++;
-    }
-    return count-1;
-}
-
-void printString(char arr[]){
-    for(int i=0; arr[i] !='\0'; i++){
-        printf("%c", arr[i]);
-    }
-    printf("\n");
-}*/
-
-
-
-
-//Q52. write a function named slice, which takes a string & returns a sliced string from index n to m.
-//slice
-/*#include<stdio.h>
-#include<string.h>
-
-void printString(char arr[]);
-int countLength(char arr[]);
-void salting(char password[]);
-void slice(char str[], int n, int m);
-
-int main(){
-    char str[] = "krishna bari";
-    slice(str,1,9);
-    return 0;
-}
-
-void slice(char str[], int n, int m){      // n & m are vaild value
-    char newStr[100];
-    int j = 0;
-    for(int i=n; i<=m; i++, j++){
-        newStr[j] = str[i];
-    }
-    newStr[j]='\0';
-    puts(newStr);
-
-}
-
-void salting(char password[]){
-    char salt[] = "123";
-    char newPass[200];
-
-    strcpy(newPass, password);  //newPass = "test"
-    strcat(newPass, salt);   // newPass = "test" + "123";
-    puts(newPass);
-}
-
-int countLength(char arr[]){
-    int count = 0;
-    for (int i=0; arr[i]!='\0';i++){
-        count++;
-    }
-    return count-1;
-}
-
-void printString(char arr[]){
-    for(int i=0; arr[i] !='\0'; i++){
-        printf("%c", arr[i]);
-    }
-    printf("\n");
-} */
-
-
-//Q53. write a function to count the occurrence of vowelsmin a string.
-
+// 3. Value at Address (* operator usage)
 /*
 #include<stdio.h>
-#include<string.h>
 
-int countVowels(char str[]);
 int main(){
-    char str[]="Helloworld";
-    printf("vowels are: %d", countVowels(str));
-    return 0;
-}
+    int age = 22;
+    int *ptr = &age;
 
-int countVowels(char str[]){
-    int count = 0;
-
-    for(int i=0; str[i] != '\0'; i++){
-        if(str[i]== 'a'|| str[i]=='e'|| str[i]=='i'||
-            str[i]== 'o'|| str[i]=='u'){
-                count++;
-            }
-    }
-    return count;
+    // value
+    printf("%d \n", age);      // 22
+    printf("%d \n", *ptr);     // 22
+    printf("%d \n", *(&age));  // 22
+    return 0; 
 }
 */
 
-
-
-//Q54. check if a given character is present in a string or not.
+// 4. Pointer Arithmetic and Updating Value via Pointer
+/*
 #include<stdio.h>
 
-void checkChar(char str[], char ch);
+int main(){
+    int *ptr;
+    int x;
+
+    ptr = &x;
+    *ptr = 0;
+
+    printf("x = %d \n", x);
+    printf("*ptr = %d \n", *ptr);
+
+    *ptr += 5;
+    printf("x = %d \n", x);
+    printf("*ptr = %d \n", *ptr);
+
+    (*ptr)++;
+    printf("x = %d \n", x);
+    printf("*ptr = %d \n", *ptr);
+    return 0; 
+}
+*/
+
+// 5. Pointer to Pointer (Double Pointer)
+/*
+#include<stdio.h>
 
 int main(){
-    char str[]= "krishna";
-    char ch = 's';
-    checkChar(str,ch);
+    float price = 100.00;
+    float *ptr = &price;
+    float **pptr = &ptr;
+    return 0;
+}
+*/
+
+// 6. Print Value of 'i' using Pointer to Pointer
+/*
+#include<stdio.h>
+
+int main(){
+    int i = 5;
+    int *ptr = &i;
+    int **pptr = &ptr;
+
+    printf("%d \n", **pptr);
+    return 0;
+}
+*/
+
+// 7. Call by Value vs Call by Reference (Square Function)
+/*
+#include<stdio.h>
+
+void square(int n);
+void _square(int* n);
+
+int main(){
+    int number = 4;
+    square(number); // Call by value (no change in main)
+    printf("number = %d \n", number);
+
+    _square(&number); // Call by reference (changes value in main)
+    printf("number = %d \n", number);
     return 0;
 }
 
-void checkChar(char str[], char ch){
-    for(int i=0; str [i]!='\0'; i++){
-        if(str[i]== ch){
-            printf("chatacter is present!");
-            return;
-        }
-    }
-    printf("character is NOT present:");
+void square(int n){
+    n = n * n;
+    printf("square = %d\n", n);
+}
+
+void _square(int* n){
+    *n = (*n) * (*n);  
+    printf("square = %d \n", *n);
+}
+*/
+
+// 8. Swap Two Numbers using Call by Reference
+/*
+#include<stdio.h>
+
+void swap(int a, int b);
+void _swap(int *a, int *b);
+
+int main(){
+    int x = 3, y = 5;
+    _swap(&x, &y);
+    printf("x = %d & y = %d \n", x, y);
+    return 0;
+}
+
+void _swap(int *a, int *b){
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+void swap(int a, int b){
+    int t = a;
+    a = b;
+    b = t;
+    printf("a = %d & b = %d \n", a, b);
+}
+*/
+
+// 9. Check if Address Passed to Function is Same
+/*
+#include <stdio.h>
+
+void printAddress(int *n);
+
+int main(){
+    int n = 4;
+    printAddress(&n); // Pass the address of n
+    printf("address in main: %u \n", &n);
+    return 0;
+}
+
+void printAddress(int *n){
+    printf("address in function: %u \n", n); // Both addresses will be same
+}
+*/
+
+// 10. Calculate Sum, Product, and Average using Pointers (Multiple Returns)
+#include <stdio.h>
+
+void doWork(int a, int b, int *sum, int *prod, int *avg);
+
+int main(){
+     int a = 3, b = 5;
+     int sum, prod, avg;
+     doWork(a, b, &sum, &prod, &avg);
+
+    printf("sum = %d, prod = %d, avg = %d \n", sum, prod, avg);
+    return 0;
+}
+
+void doWork(int a, int b, int *sum, int *prod, int *avg){
+    *sum = a + b;
+    *prod = a * b;
+    *avg = (a + b) / 2;
 }
