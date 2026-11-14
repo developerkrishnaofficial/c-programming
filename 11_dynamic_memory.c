@@ -1,229 +1,221 @@
-//dynamic memory allocation:it is a way allocate memory to a data structure during the runtime.
-//we need some function to allocate & free memory dynamically.
-  // function for DMA:
-   //1.malloc()=memory allocation 2.calloc()=continus allocation  3.free()=    4.realloc()=re-allocation
-
-
-
-  // 1.malloc()=memory allocation
-   //takes no. of bytes to be allocated & returns a pointer of type void.
-    //ptr=(*int)malloc(5*sixeof(int));           means (5*4) = 20 bytes
+// 1. Sizeof Operator Example
 /*
 #include<stdio.h>
 #include<stdlib.h>
 
 int main(){
-    printf("%d \n", sizeof(int));
-    printf("%d \n", sizeof(float));
-    printf("%d \n", sizeof(char));
+    printf("Size of int: %lu \n", sizeof(int));
+    printf("Size of float: %lu \n", sizeof(float));
+    printf("Size of char: %lu \n", sizeof(char));
     return 0;
-}*/
+}
+*/
 
-
+// 2. Malloc Basic Example
 /*
 #include<stdio.h>
 #include<stdlib.h>
 
 int main(){
-
     int *ptr;
     ptr = (int *) malloc(5 * sizeof(int));
 
-    ptr[0]= 1;
-    ptr[1]= 2;
-    ptr[2]= 3;
-    ptr[3]= 6;
-    ptr[4]= 8;
+    ptr[0] = 1;
+    ptr[1] = 2;
+    ptr[2] = 3;
+    ptr[3] = 6;
+    ptr[4] = 8;
 
-    for(int i=0; i<5; i++){
+    for(int i = 0; i < 5; i++){
         printf("%d \n", ptr[i]);
     }
+    
+    free(ptr); // Good practice to free allocated memory
     return 0;
 }
-    */
+*/
 
-
-
-//Q65. WAP to allocate memory to store 5 prices.
-/*#include<stdio.h>
+// 3. Q65: Allocate Memory to Store 5 Prices using malloc
+/*
+#include<stdio.h>
 #include<stdlib.h>
 
 int main(){
-
     float *ptr;
     ptr = (float *) malloc(5 * sizeof(float));
 
-    ptr[0]= 1;
-    ptr[1]= 2;
-    ptr[2]= 3;
-    ptr[3]= 6;
-    ptr[4]= 8;
+    ptr[0] = 10.5;
+    ptr[1] = 20.0;
+    ptr[2] = 35.5;
+    ptr[3] = 60.0;
+    ptr[4] = 85.0;
 
-    for(int i=0; i<5; i++){
+    for(int i = 0; i < 5; i++){
         printf("%f \n", ptr[i]);
     }
-    return 0;
-}*/
-
-
-
-
-
-//2. calloc()= continuous allocation  = 
-                                    //initializes with 0  
-                                    //ptr =(*int) calloc(5, sizeof(int));
-/*#include<stdio.h>
-#include<stdlib.h>
-
-int main(){
-
-    float *ptr;
-    ptr = (float *) calloc(5 , sizeof(float));
-
-
-    for(int i=0; i<5; i++){
-        printf("%f \n", ptr[i]);
-    }
-    return 0;
-}*/
-
-
-
-//Q66. WAP to allocate memory of size n, where n is entered by the user.
-/*#include<stdio.h>
-#include<stdlib.h>
-
-int  main(){
-    int *ptr;
-    int n;
-    printf("enter n:");
-    scanf("%d", &n);
-
-    ptr = (int*) calloc(n, sizeof(int));
-
-    for(int i=0; i<n; i++){
-        printf("%d\n", ptr[i]);
-    }
-    return 0;
-}*/
-
-
-
-
-//3. free()= we use it to free memory that is allocated using malloc & calloc   
-  //free(ptr);
-
-/*#include<stdio.h>
-#include<stdlib.h>
-
-int main(){
-    int *ptr;
-    int n;
-    printf("enter n:");
-    scanf("%d", &n);
-
-    ptr = (int*) calloc(n, sizeof(int));
-
-    for(int i=0; i<n; i++){
-        printf("%d\n", ptr[i]);
-    }
-
+    
     free(ptr);
-
-    ptr =(int *) calloc(2, sizeof(int));
-    for(int i=0; i<2; i++){
-        printf("%d\n", ptr[i]);
-    }
     return 0;
-}*/
+}
+*/
 
-
-
-//4. realloc()= reallocate(increase or decrease) memory using the same pointer & size.
-    //ptr = realloc(ptr, newSize);
-
-/*#include<stdio.h>
-#include<stdlib.h>
-
-int main(){
-    int *ptr;
-    ptr =(int *) calloc(5, sizeof(int));
-
-    printf("enter no(5):");
-    for(int i=0; i<5; i++){
-        scanf("%d\n", &ptr[i]);
-    }
-
-    ptr =realloc(ptr, 8);
-    printf("enter no(8):");
-    for(int i=0; i<8; i++){
-        scanf("%d\n", &ptr[i]);
-    }
-
-    //print
-    for(int i=0; i<8; i++){
-        printf("no %d is %d",i, &ptr[i]);
-    }
-    return 0;
-}*/
-
-
-//Q69. Create an arrray of size5(using calloc)& enter its values from the user.
-/*#include<stdio.h>
-#include<stdlib.h>
-
-int main(){
-    int *ptr;
-    ptr =(int *) calloc(5, sizeof(int));
-
-    printf("enter no(5):");
-    for(int i=0; i<5; i++){
-        scanf("%d\n", &ptr[i]);
-    }
-
-
-    //print
-    for(int i=0; i<8; i++){
-        printf("no %d is %d",i, &ptr[i]);
-    }
-    return 0;
-}*/
-
-
-
-
-
-//Q70. allocate memory to store first 5 odd numbers, then reallocate it to store first 6 even number.
+// 4. Calloc Basic Example (Initializes with 0)
+/*
 #include<stdio.h>
 #include<stdlib.h>
 
 int main(){
+    float *ptr;
+    ptr = (float *) calloc(5, sizeof(float));
 
-    int *ptr;
-    ptr = (int *) malloc(5 * sizeof(int));
-
-    ptr[0]= 1;
-    ptr[1]= 2;
-    ptr[2]= 3;
-    ptr[3]= 5;
-    ptr[4]= 7;
-
-    for(int i=0; i<5; i++){
-        printf("%d \n", ptr[i]);
+    for(int i = 0; i < 5; i++){
+        printf("%f \n", ptr[i]); // will print 0.000000
     }
+    
+    free(ptr);
+    return 0;
+}
+*/
 
-    ptr = realloc(ptr, 6);
-    ptr[0]= 2;
-    ptr[1]= 4;
-    ptr[2]= 6;
-    ptr[3]= 8;
-    ptr[4]= 10;
-    ptr[5]= 12;
+// 5. Q66: Allocate Memory of Size n Entered by User using calloc
+/*
+#include<stdio.h>
+#include<stdlib.h>
 
-    for(int i=0; i<6; i++){
+int main(){
+    int *ptr;
+    int n;
+    printf("enter n: ");
+    scanf("%d", &n);
+
+    ptr = (int *) calloc(n, sizeof(int));
+
+    for(int i = 0; i < n; i++){
+        printf("%d\n", ptr[i]);
+    }
+    
+    free(ptr);
+    return 0;
+}
+*/
+
+// 6. Free Function Example (Freeing and Re-allocating memory)
+/*
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+    int *ptr;
+    int n;
+    printf("enter n: ");
+    scanf("%d", &n);
+
+    ptr = (int *) calloc(n, sizeof(int));
+
+    for(int i = 0; i < n; i++){
         printf("%d\n", ptr[i]);
     }
 
+    free(ptr); // free memory
+
+    ptr = (int *) calloc(2, sizeof(int));
+    for(int i = 0; i < 2; i++){
+        printf("After re-allocation: %d\n", ptr[i]);
+    }
     
+    free(ptr);
+    return 0;
+}
+*/
+
+// 7. Realloc Example (Increasing memory size)
+/*
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+    int *ptr;
+    ptr = (int *) calloc(5, sizeof(int));
+
+    printf("enter 5 numbers:\n");
+    for(int i = 0; i < 5; i++){
+        scanf("%d", &ptr[i]);
+    }
+
+    // Reallocate memory for 8 integers (Note: pass total bytes i.e. 8 * sizeof(int))
+    ptr = realloc(ptr, 8 * sizeof(int));
+    printf("enter 3 more numbers:\n");
+    for(int i = 5; i < 8; i++){
+        scanf("%d", &ptr[i]);
+    }
+
+    // print values (Fixed bug: printing *ptr[i] instead of &ptr[i])
+    for(int i = 0; i < 8; i++){
+        printf("no %d is %d \n", i, ptr[i]);
+    }
+    
+    free(ptr);
+    return 0;
+}
+*/
+
+// 8. Q69: Create an Array of Size 5 using calloc & Take Input from User
+/*
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+    int *ptr;
+    ptr = (int *) calloc(5, sizeof(int));
+
+    printf("enter 5 numbers:\n");
+    for(int i = 0; i < 5; i++){
+        scanf("%d", &ptr[i]);
+    }
+
+    // print values (Fixed loop bound from 8 to 5 to prevent out-of-bounds error)
+    for(int i = 0; i < 5; i++){
+        printf("no %d is %d \n", i, ptr[i]);
+    }
+    
+    free(ptr);
+    return 0;
+}
+*/
+
+// 9. Q70: Allocate Memory for 5 Odd Numbers, then Reallocate for 6 Even Numbers
+#include<stdio.h>
+#include<stdlib.h>
+
+int main(){
+    int *ptr;
+    ptr = (int *) malloc(5 * sizeof(int));
+
+    ptr[0] = 1;
+    ptr[1] = 3;
+    ptr[2] = 5;
+    ptr[3] = 7;
+    ptr[4] = 9;
+
+    printf("Odd numbers:\n");
+    for(int i = 0; i < 5; i++){
+        printf("%d \n", ptr[i]);
+    }
+
+    // Reallocate memory for 6 integers
+    ptr = realloc(ptr, 6 * sizeof(int));
+    ptr[0] = 2;
+    ptr[1] = 4;
+    ptr[2] = 6;
+    ptr[3] = 8;
+    ptr[4] = 10;
+    ptr[5] = 12;
+
+    printf("Even numbers after realloc:\n");
+    for(int i = 0; i < 6; i++){
+        printf("%d \n", ptr[i]);
+    }
+
+    free(ptr);
     return 0;
 }
